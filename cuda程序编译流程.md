@@ -6,7 +6,7 @@
 
 在`matrixMul`示例中，源代码文件 `matrixMul.cu` 是典型的CUDA程序，包含以下部分：
 #### 流程图
-![alt text](20161225140143964.png)
+![alt text](/images/20161225140143964.png)
 * **主机代码（Host Code）**：运行在CPU上的代码，用于数据准备、调用CUDA内核（kernel）等。
 * **设备代码（Device Code）**：运行在GPU上的CUDA内核，负责矩阵乘法计算。
 
@@ -146,7 +146,7 @@ int main() {
 最后，主机端的 `.o` 文件和设备端的 `.fatbin.c` 文件通过标准C/C++编译器（如 `gcc` 或 `g++`）进行链接。这个过程会将主机代码和设备代码一起打包成最终的可执行文件。
 
 #### 编译链接全过程
-![alt text](GPU编译流程cuda-compilation-from-cu-to-executable.png)
+![alt text](/images/GPU编译流程cuda-compilation-from-cu-to-executable.png)
 
 ----
 ### Ref
