@@ -47,7 +47,7 @@ tar -xvjf ./nvbit-Linux-x86_64-1.7.1.tar.bz2
 ```bash
 cd nvbit-release
 export NVBIT_ROOT=$(pwd)
-export LD_LIBRARY_PATH=$NVBIT_ROOT:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=NVBITROOT:NVBIT_ROOT:LD_LIBRARY_PATH
 ```
 ### 3.进入tools里会有mem_trace目录：
 mem_trace.cu是一个插槽功能的函数
