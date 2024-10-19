@@ -18,8 +18,8 @@ cuda 版本不宜太高，具体适用的版本在clone下来的git里有 常用
 如果不行，执行以下步骤：
 ```bash
 export CUDA_INSTALL_PATH=/usr/local/cuda
-export PATH=$CUDA_INSTALL_PATH/bin:$PATH
-export LD_LIBRARY_PATH=$CUDA_INSTALL_PATH/lib64:$LD_LIBRARY_PATH
+export PATH=CUDAINSTALLPATH/bin:CUDA_INSTALL_PATH/bin:PATH
+export LD_LIBRARY_PATH=CUDAINSTALLPATH/lib64:CUDA_INSTALL_PATH/lib64:LD_LIBRARY_PATH
 sudo apt-get install xutils-dev
 sudo apt-get install bison
 sudo apt-get install flex
