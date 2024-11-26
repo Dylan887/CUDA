@@ -1,0 +1,48 @@
+
+Image File Directory Structure
+
+The directory structure consists of the following:
+
+- `models`: Contains the model code for `train` and `inference`, as well as additional resources such as `data` for datasets and `pre_weights` for pre-trained weights.
+- `command`: Includes bash scripts such as `start.sh`, `start_all.sh`, and `clean.sh`.
+
+How to Use
+
+To start performance testing for a single model, ensure you are in the specific model's directory and execute the command:  
+```bash
+start <param>
+```
+The `<param>` can be one of the following:  
+- `train`: To perform training performance testing.  
+- `inference`: To perform inference performance testing.  
+- `train inference`: To test both training and inference performance.
+
+If you want to trace additional information during performance testing, you can run the following command manually:  
+```bash
+nsys profile --trace=cuda,cudnn,nvtx,osrt --output=<train> python <train.py>
+```
+Replace `<train>` with your desired output file name. You can also modify the `nsys profile` command in the `start.sh` script to include or exclude specific traces.
+
+To extract specific metrics from the profiling results, use the following command:  
+```bash
+nsys stats <inference.nsys-rep> -r <cuda_api_gpu_sum> --format csv --output <inference>
+```
+Here, `<inference.nsys-rep>` is the profiling report file, `<cuda_api_gpu_sum>` is the desired metric, and `<inference>` is the name of the output file.
+
+If you need to clean up performance test-related files in the current directory, use:  
+```bash
+clean + y(Y)
+```
+This will delete all files with the following extensions: `.csv`, `.pth`, `.nsys-rep`, and `.sqlite`.
+
+Batch Execution
+
+To run performance testing for all models in the `models` directory, you can use:  
+```bash
+start-all
+```
+This will sequentially execute performance tests (both training and inference) for every model directory. However, it is **not recommended** to batch test all models, as this may result in issues such as insufficient CUDA device memory or runtime errors caused by GPU resource constraints. If such problems occur, it is advised to execute performance tests for individual models.
+
+Customizing Scripts
+
+The behavior of the `start.sh` script can be modified to adjust the profiling or metrics collection logic. For instance, you can modify the `nsys profile` command to include more detailed traces, such as `cudnn` or `nvtx`, or you can add/remove metrics in the `nsys stats` command for more targeted results.
