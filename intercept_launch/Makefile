@@ -2,10 +2,12 @@
 
 # Compiler and flags
 NVCC = nvcc
-CXX = g++
-CXXFLAGS = -std=c++11 -I/usr/local/cuda-12.5/include
-NVCCFLAGS = -arch=sm_86 -I/usr/local/cuda-12.5/iclude --compiler-options '-fPIC'
-LDFLAGS = -L/usr/local/cuda-12.5/lib64 -lcuda -lcudart -lcupti
+CXX = g++CXXFLAGS = -std=c++11 -I/usr/local/cuda-12.2/include -I/usr/local/cuda/extras/CUPTI/include
+NVCCFLAGS = -arch=compute_75 -I/usr/local/cuda-12.2/include -I/usr/local/cuda/extras/CUPTI/include --compiler-options '-fPIC'
+LDFLAGS = -L/usr/local/cuda/extras/CUPTI/lib64 -L/usr/local/cuda-12.2/lib64 -lcuda -lcudart -lcupti
+# CXXFLAGS = -std=c++11 -I/usr/local/cuda-12.5/include
+# NVCCFLAGS = -arch=sm_86 -I/usr/local/cuda-12.5/iclude --compiler-options '-fPIC'
+# LDFLAGS = -L/usr/local/cuda-12.5/lib64 -lcuda -lcudart -lcupti
 
 
 # Executable name

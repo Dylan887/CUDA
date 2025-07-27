@@ -126,6 +126,10 @@ $ nvida-smi
 `NVCCFLAGS = -arch=sm_86 -I/usr/local/cuda-12.5/include --compiler-options '-fPIC'
 LDFLAGS = -L/usr/local/cuda-12.5/lib64 -lcuda -lcudart -lcupti`设置为本地路径即可
 
+> -arch需要根据GPU类型更新， 如3090卡是sm_86, T1000卡为sm_75
+> 
+> LDFLAGS和NVCCFLAGS需要添加CUPTI相关路径
+
 ---
 ## Developer guide
 
